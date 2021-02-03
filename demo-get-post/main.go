@@ -37,6 +37,11 @@ func init() {
 	Hàm chính
 	Mỗi service chỉ và phải có 1 hàm main
 */
+func remove(s []int, i int) []int {
+	s[i] = s[len(s)-1]
+
+	return s[:len(s)-1]
+}
 func main() {
 
 	router := gin.Default()
@@ -76,16 +81,15 @@ func main() {
 
 		c.String(200, "add product success")
 	})
+
 	router.DELETE("/product/delete/:id", func(c *gin.Context) {
+		id := c.Param("id")
+		var product ProductStruct
+		product.Id = id
 
-		var sessions = map[string]chan int{}
-		ProductStruct["id"] = make(chan int)
-
-		fmt.Printf("%d\n", len(ProductStruct))
-
-		delete(ProductStruct, "id")
-
-		fmt.Printf("%d\n", len(ProductStruct))
+		fmt.Println(productList)
+		productList = remove(productList, id)
+		productList = append(productList, product)
 
 	})
 	router.Run()
