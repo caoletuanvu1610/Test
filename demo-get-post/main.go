@@ -8,7 +8,7 @@ import (
 	"log"
 
 	"github.com/gin-gonic/gin"
-	Product "./module/product"
+	Product "demogo/module/product"
 )
 
 /*
