@@ -19,11 +19,9 @@ func init() {
 	log.Println("Khởi động Service DEMO Get/Post")
 }
 
-
+// demo merge request
 func main() {
-
 	router := gin.Default()
-
 	Product.InitUrlProduct(router)
 
 	router.Run()
